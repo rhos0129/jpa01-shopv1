@@ -1,5 +1,8 @@
 package org.example.jpashopv1;
 
+import org.example.jpashopv1.domain.Order;
+import org.example.jpashopv1.domain.OrderItem;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -15,6 +18,14 @@ public class Jpashopv1Main {
         tx.begin();
 
         try{
+
+            Order order = new Order();
+//            order.addOrderItem(new OrderItem());
+            em.persist(order);
+
+            OrderItem orderItem = new OrderItem();
+            orderItem.setOrder(order);
+            em.persist(orderItem);
 
             tx.commit();
 
